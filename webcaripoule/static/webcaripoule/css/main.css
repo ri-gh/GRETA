@@ -1,0 +1,84 @@
+body {
+     background-color : white;
+     color: #666666;
+     font-size: 13px;
+     text-align: center;
+     font-family: "Gill Sans", sans-serif;
+     line-height: 1.80857;
+     font-weight: normal;
+}
+
+h1
+ {
+color : black;
+text-align: center ;
+  background: linear-gradient(to right, rgba(255, 215, 255, 0) 0%, rgba(225, 255, 255, 0.5) 20%, rgba(225, 255, 255, 0.5) 45%, rgba(255, 255, 255, 0) 61%), linear-gradient(rgb(228, 60, 28) 50%, rgb(29, 14, 209) 55%,rgb(255, 248, 59) 60%, rgb(14, 209, 24) 63%);
+  background-clip: text;
+  /*add this line, it defines how far the background should extend within an element, here we set it to text */
+  -webkit-background-clip: text;
+  /* add this line, for browsers compatibility */
+  -webkit-text-fill-color: transparent;
+    animation: wave 2000ms ease alternate infinite;
+  /* add this line */
+  transition: all 0.4s ease;
+
+}
+@keyframes wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50vw 10px;
+  }
+}
+/* add this line */
+
+table
+{
+    border-collapse: collapse;
+    margin: 1em;
+}
+
+span
+{
+font-size : 15px;
+}
+td {
+    border: 1px solid black;
+    text-align: center ;
+    vertical-align: middle;
+    padding:1em;
+}
+
+th {
+    color : blue;
+    border: 1px solid black;
+    text-align: center ;
+    vertical-align: middle;
+    padding:1em;
+}
+
+
+p {
+font-weight:bold;
+}
+
+
+
+img {
+     display : block;
+     width : 40%;
+     margin : auto;
+}
+
+
+.image {
+    display : block;
+    width : 100%;
+    margin : auto;
+}
+
+.text {
+text-align : center;
+}
+

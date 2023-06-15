@@ -1,0 +1,83 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'webcaripoule/css/main.css' %}">
+    <title>Details des recettes</title>
+            <style>
+      /* unvisited link */
+      a:link {
+        color: blue;
+      }
+      /* visited link */
+      a:visited {
+        color: purple;
+      }
+      /* mouse over link */
+      a:hover {
+        color: red;
+      }
+      /* selected link */
+      a:active {
+        color: yellow;
+      }
+    </style>
+</head>
+<h1>Classement par temps de préparation ⌛</h1>
+<body>
+<form >
+        <button type="submit" formaction="{% url 'webcaripoule:diff' %}" > Classement par  difficulté 😰</button>
+        <button type="submit" formaction="{% url 'webcaripoule:avis' %}"> Classement par nombre d'avis ⁉️</button>
+        <button type="submit" formaction="{% url 'webcaripoule:cuisson' %}" name="query">Classement par temps de cuisson 🍲</button>
+
+</form>
+<p><a href="{% url 'webcaripoule:searchresult' %}">&laquo;Revenir à la page des résultats</a></p>
+
+<table>
+    <thead>
+        <th>Titre</th>
+        <th>Note</th>
+        <th>Difficulté</th>
+        <th>Preparation (min)</th>
+        <th>Cuisson (min)</th>
+        <th>Nombre d'avis</th>
+        <th>Ingredients</th>
+    </thead>
+  {% for recipe in page_obj %}
+  <tr>
+      <td><a href="{{recipe.url}}">{{ recipe.titre }}</a></td>
+      <td>{{ recipe.note}}</td>
+      <td>{{recipe.difficulte}}</td>
+      <td>{{recipe.temps_preparation}}</td>
+      <td>{{recipe.temps_cuisson}}</td>
+      <td>{{recipe.nbre_avis}}</td>
+      <td>{{recipe.ingredients}}</td>
+  </tr>
+  {%endfor%}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<p><a href="{% url 'webcaripoule:home' %}">&laquo; Lancer une nouvelle recherche</a></p>
+{%endblock%}
+
+</body>
+</html>

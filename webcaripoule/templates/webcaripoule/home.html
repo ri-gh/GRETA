@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'webcaripoule/css/main.css' %}">
+    <title>Cuisinons avec Caripoule!</title>
+</head>
+<body>
+<h1>🌴🧑🏾‍🍳  Bienvenue chez Caripoule 🍴☀️</h1>
+<p> Si vous cherchez une bonne recette de cuisine, vous n'avez pas le temps d'aller sur ❌ sites ⏱️ </p>
+<p> De consulter chaque recette sur chaque page et bien... vous êtes au bon endroit ! 🤩 ✅</p>
+<p> Lancez donc une recherche et... laissez mijoter, comme en cuisine 🍲🧑🏽‍🍳</p>
+<form method = "POST">
+    {% csrf_token %}
+    <input type ="text" name ="recette" placeholder="Quelle recette cherchez vous ?">
+    <input type="submit" value = "Rechercher" >
+</form>
+    <br>
+    {% if not recette %}
+        <div class="image_1"><img src="{% static 'webcaripoule/images/FoodImages.png' %}" alt="My image"></div>
+
+    {%elif fichier_vide %}
+<h3>Désolé nous n'avons pas trouvé de recettes pour "{{recette}}" 🥵</h3>
+        <div class="image_1"><img src="{% static 'webcaripoule/images/FoodImages.png' %}" alt="My image"></div>
+
+    {%elif recette %}
+<form method="GET" action="{% url 'webcaripoule:searchresult' %}" name="query">
+        <button type="submit"> ➡️ Résultats pour : "{{recette}}" disponible ici ⬅️ </button>
+</form>
+<h3>🤓 Quelques chiffres :</h3>
+<div class="text">
+<p>La note moyenne pour cette recette est de {{ notemoyenne }} /5</p>
+<p> Le temps moyen de préparation est de {{ tpsprepmoy|floatformat:0 }} minutes</p>
+<p> Le temps moyen de cuisson est de {{ tpscuissmoy|floatformat:0 }} minutes</p>
+    {%for k, v in count.items %}
+<p> Le niveau de difficulté "{{ k }}" a été donné {{ v }} fois </p>
+    {% endfor %}
+</div>
+<div class="image"><img src="{% static 'webcaripoule/images/pie_image.png' %}" alt="My pie">
+    </div>
+    {%endif%}
+</body>
+</html>
