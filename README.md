@@ -1,11 +1,11 @@
 # GRETA
 
-Python programming project about cooking recipes :
+**Python** programming project (Ubuntu) about cooking recipes :
 
-* Scraping datas with Scrapy
+* Scraping datas on several websites with **Scrapy**
 
-* Cleaning datas with Pandas
+* Cleaning and reformating datas with **Pandas** to get standardized informations
 
-* Creating a website user friendly with django to sum up scraping result
+* Creating an user friendly website with **Django** to sum up scraping result
 
-* Customizing the website using HTML & CSS
+* Customizing the website using **HTML** & **CSS**
